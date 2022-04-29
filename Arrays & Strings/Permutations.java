@@ -1,3 +1,5 @@
+// Cracking the Coding Interview - pp. 90 - q 1.2
+
 class Permutations {
 
     public static void merge(char[] charArray, int leftPtr, int midPtr, int rightPtr) {
@@ -50,17 +52,12 @@ class Permutations {
             k++;
         }
 
-        // System.out.println(charArray);
-
         // Add remaining elements from B to original array
         while (j < rightHalf.length) {
             charArray[k] = rightHalf[j];
             j++;
             k++;
         }
-
-        // System.out.println(charArray);
-        System.out.println();
     }
 
     public static void mergeSort(char[] charArray, int leftPtr, int rightPtr) {
@@ -94,9 +91,6 @@ class Permutations {
         // Sort arrays
         mergeSort(charA, 0, charA.length - 1);
         mergeSort(charB, 0, charB.length - 1);
-
-        // System.out.println(charA);
-        // System.out.println(charB);
 
         for (int i=0; i<strA.length(); i++) {
             if (charA[i] != charB[i]) {return false;}

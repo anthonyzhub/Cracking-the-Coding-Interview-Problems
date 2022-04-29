@@ -1,3 +1,5 @@
+# Cracking the Coding Interview - pp. 90 - q 1.2
+
 class Permutations:
 
     def merge(self, strList, leftPtr, midPtr, rightPtr):
