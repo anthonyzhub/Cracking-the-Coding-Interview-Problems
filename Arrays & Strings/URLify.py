@@ -4,7 +4,12 @@ class URLify:
 
     def solOne(self, str1):
 
-        # OBJECTIVE: Replace all whitespaces with "%20" inside string
+        """
+            OBJECTIVE: Replace all whitespace with "%20" and return string
+            Time complexity: O(2n) where n = length of string. String is traversed twice in replace() and by my for-loop
+            Space complexity: O(2n) where n = length of string. String is converted to a list for the for-loop and traversed again to
+                                convert back to a string.
+        """
 
         # Replace all duplicate whitespace with a singular one
         str1 = str1.replace("  ", " ")

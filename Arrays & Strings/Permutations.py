@@ -70,7 +70,12 @@ class Permutations:
 
     def solOne(self, str1, str2):
 
-        # OBJECTIVE: Check if both strings are permutations of one another
+        """
+            OBJECTIVE: Assuming both strings are equal length, check if both strings are permutations of another.
+            Time complexity: O(n) where n = the length of both strings. It's assume that both strings share the same length
+            Space complexity: O(2n log n + n) where n = length of both strings. Both strings will be sorted (2 * (n log n )) and
+                                strA will be traversed (n) to compare against strB.
+        """
 
         # If both strings aren't equal in length, then return false
         if len(str1) != len(str2):

@@ -4,7 +4,11 @@ public class URLify {
     
     public static String solOne(String str) {
 
-        // OBJECTIVE: Replace all whitespace with "%20" and return string
+        /*
+            OBJECTIVE: Replace all whitespace with "%20" and return string
+            Time complexity: O(2n) where n = length of string. String is traversed twice in replaceAll() and by my for-loop
+            Space complexity: O(n) where n = length of string. String is converted to a char array for the for-loop.
+        */
 
         // Remove duplicate whitespaces with replaceAll()
         // Then, remove leading and trailing whitespaces with trim()
