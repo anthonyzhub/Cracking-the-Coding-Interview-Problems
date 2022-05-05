@@ -4,18 +4,13 @@ class Solution:
 
     def solOne(self, str1, str2):
 
-        # OBJECTIVE: Rotate either string until they both look the same (erbottlewat == waterbottle)
-        # NOTE: This is a permutation problem:
-
         """
-        bottlewater == ber                    rbottlewate
-                            bottlewater
-                            ottlewaterb
-                            ttlewaterbo
-                            tlewaterbot
-                            lewaterbott
-                            ewaterbottl
-                            waterbottle
+            OBJECTIVE: Rotate either string until both matches (e.g., erbottlewat == waterbottle).
+                        This is a permutation problem.
+
+            Time complexity: O(n) where n = length of either string since they both are the same. 
+
+            Space complexity: O(n) where n = the size of the array lists.
         """
 
         # If both strings aren't equal in length, exit function

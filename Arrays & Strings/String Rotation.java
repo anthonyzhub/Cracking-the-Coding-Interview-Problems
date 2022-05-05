@@ -21,8 +21,14 @@ class StringRotation {
     
     public static boolean solOne(String str1, String str2) {
 
-        // OBJECTIVE: Rotate either string until both matches (e.g., erbottlewat == waterbottle).
-        // This is a permutation problem.
+        /*
+            OBJECTIVE: Rotate either string until both matches (e.g., erbottlewat == waterbottle).
+                        This is a permutation problem.
+
+            Time complexity: O(n) where n = length of either string since they both are the same. 
+
+            Space complexity: O(n) where n = the size of the array lists.
+        */
 
         // If both strings aren't equal in length, return false
         if (str1.length() != str2.length()) {return false;}

@@ -20,7 +20,7 @@ class UniqueCharacters {
         }
 
         // Create a hash map
-        HashMap<Character, Integer> letters = new HashMap();
+        HashMap<Character, Integer> letters = new HashMap<Character, Integer>();
 
         // Traverse string
         for (int i=0; i<str.length(); i++) {

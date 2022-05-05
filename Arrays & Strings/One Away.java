@@ -69,7 +69,18 @@ class OneAway {
     }
 
     public static boolean solOne(String str1, String str2) {
-        // OBJECTIVE: Check if both strings are permutations of one another with at most 1 edit
+        
+        /*
+            OBJECTIVE: Check if both strings are the same with at-most 1 edit permitted (replace, drop, or insert a letter)
+            
+            Time complexity: O(n) where n = length of either string if replaceOneLetter() is executed. If deleteOrAdd() is
+                            executed instead, then O(b) where b = length of bigger string because bigIdx can move 1 index more
+                            than smallIdx if a mismatched letter is found
+            
+            Space complexity: O(n) where n = length of either string if replaceOneLetter() is executed because 2 new lists are
+                            created. In deleteOrAdd(), it will be O(S + B) where S = length of small string and B = length of
+                            big string because 2 new lists are created for each string.
+        */
 
         // If both strings are different in length by 2, return false
         if (Math.abs(str1.length() - str2.length()) >= 2) {
