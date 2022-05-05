@@ -1,6 +1,6 @@
 // Cracking the Coding Interview - pp. 91 - q 1.6
 
-public class Compression {
+public class StringCompression {
     
     public static String solOne(String str) {
     

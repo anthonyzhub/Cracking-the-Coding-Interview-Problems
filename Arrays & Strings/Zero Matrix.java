@@ -1,6 +1,8 @@
+// Cracking the Coding Interview - pp. 91 - q 1.8
+
 import java.util.*;
 
-class Solution {
+class ZeroMatrix {
 
     public static void changeRow(int[][] matrix, int xPos) {
 

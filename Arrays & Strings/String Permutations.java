@@ -1,6 +1,6 @@
 // Cracking the Coding Interview - pp. 90 - q 1.2
 
-class Permutations {
+class StringPermutations {
 
     public static void merge(char[] charArray, int leftPtr, int midPtr, int rightPtr) {
 
