@@ -40,8 +40,8 @@ class RemoveDuplicates:
 
         """
             OBJECTIVE: Sort unsorted linked list
-            Time complexity: O(n log n) where n = length of linked list.
-            Space complexity: O(n) where n = length of buffer[] list in sortLinkedList().
+            Time Complexity: O(n log n) where n = length of linked list.
+            Space Complexity: O(n) where n = length of buffer[] list in sortLinkedList().
         """
 
         # If headNode is empty or by itself, exit function
