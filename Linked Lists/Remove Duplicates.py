@@ -1,41 +1,67 @@
 # Cracking the Coding Interview - pp. 94 - q 2.1
 
-from LinkedList import LinkedList
+from SinglyLinkedList import SinglyLinkedList
 
 class RemoveDuplicates:
 
-    def sortLinkedList(self, headNode):
+    def setSol(self, curNode):
 
-        # OBJECTIVE: Sort linked list
+        """
+            OBJECTIVE: Answer solution with a hash set
+            Time Complexity: O(n) where n = length of linked list
+            Space Complexity: O(n) where n = length of hash set
+        """
 
-        # Create a list
-        buffer = list()
+        # Create a set
+        valueSet = set()
 
         # Traverse linked list
-        curNode = headNode
-        while curNode.next != None: # <= ".next" added since tail node is attached (it's still a node)
+        prevNode = curNode
+        while curNode != None:
 
-            # Add node's value to list
-            buffer.append(curNode.val)
+            # If value already exist inside of set, have prevNode connect to curNode.next
+            if curNode.val in valueSet:
+                prevNode.next = curNode.next
+            
+            # If not, add value to set and update prevNode
+            else:
+                valueSet.add(curNode.val)
+                prevNode = curNode
 
             # Move to next node
             curNode = curNode.next
 
-        # Sort list
-        buffer.sort()
+    def tortoiseAndHare(self, headNode):
 
-        # Traverse linked list
-        curNode = headNode
-        while curNode.next != None: # <= ".next" added since tail node is attached (it's still a node)
+        """
+            OBJECTIVE: Remove duplicate nodes from linked list
+            Time Complexity: O(n^2) where n = length of linked list. This algorithm involves create 2 pointers (tortoise and hare). For each node, the linked
+                                list is traversed from tortoise node to the end.
+            Space Complexity: O(1) because no large datasets were created. Only 2 new nodes were created, but they are constant.
+        """
 
-            # Pop element from list and use it to update curNode's value
-            curNode.val = buffer.pop(0)
+        # Create a tortoise node (slow node)
+        tortoise = headNode
 
-            # Move to next node
-            curNode = curNode.next
+        # Move tortoise
+        while tortoise != None:
 
-        return headNode
+            # Create a hare node
+            hare = tortoise
 
+            # Move hare and remove nodes with same value
+            while hare.next != None:
+
+                # If both nodes share the same value, move (hop) 2 nodes to the right
+                if hare.next.val == tortoise.val:
+                    hare.next = hare.next.next
+
+                # If not, move to next node
+                else:
+                    hare = hare.next
+
+            tortoise = tortoise.next
+    
     def solOne(self, headNode):
 
         """
@@ -48,44 +74,48 @@ class RemoveDuplicates:
         if headNode is None or headNode.next is None:
             return
 
-        # Sort linked list
-        self.sortLinkedList(headNode)
-
-        # Get 2nd node from linked list
-        curNode = headNode.next
+        # Create a list
+        buffer = list()
 
         # Traverse linked list
-        counter = 2
-        while curNode.next != None:
+        curNode = headNode
+        while curNode != None: # <= ".next" added since tail node is attached (it's still a node)
 
-            # Capture previous node
-            prevNode = curNode.prev
-
-            # If current and last node share same value, delete last node
-            if prevNode.val == curNode.val:
-
-                print(f"node #{counter-1} == node #{counter}")
-
-                # Save node before curNode.prev
-                nodeBefore = prevNode.prev
-
-                # Connect last node's prev pointer to curNode
-                nodeBefore.next = curNode
-                curNode.prev = nodeBefore
-
-                # Delete curNode's previous node
-                # NOTE: "del curNode.prev" will cause an error, instead of "del prevNode"
-                #       I think it's because I'm deleting ".prev" pointer instead of the actual node
-                del prevNode
+            # Add node's value to list
+            buffer.append(curNode.val)
 
             # Move to next node
             curNode = curNode.next
-            counter += 1
+
+        # Sort list
+        buffer.sort()
+
+        # Traverse linked list
+        curNode = headNode
+        while curNode != None: # <= ".next" added since tail node is attached (it's still a node)
+
+            # Pop element from list and use it to update curNode's value
+            curNode.val = buffer.pop(0)
+
+            # Move to next node
+            curNode = curNode.next
+
+        # Traverse linked list
+        prevNode = headNode
+        curNode = headNode.next
+        while curNode != None:
+
+            # If current and last node share same value, delete last node
+            if prevNode.val == curNode.val:
+                prevNode.next = curNode.next
+
+            # Move to next node
+            curNode = curNode.next
         
 def main():
 
     # Initialize linked list
-    ll = LinkedList()
+    ll = SinglyLinkedList()
     ll.append(0)
     ll.append(0)
     ll.append(21)
@@ -96,7 +126,9 @@ def main():
 
     # Initialize solution
     sol = RemoveDuplicates()
-    sol.solOne(ll.getHead())
+    sol.tortoiseAndHare(ll.getHead())
+    # sol.setSol(ll.getHead())
+    # sol.solOne(ll.getHead())
     ll.printList()
 
 main()

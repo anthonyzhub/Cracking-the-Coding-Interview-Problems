@@ -19,7 +19,7 @@ class Duplicates {
 
         // Traverse linked list
         Node prevNode = curNode;
-        while (curNode.next != null) {
+        while (curNode != null) {
 
             // If value already exist, have prevNode skip curNode for curNode.next
             if (set.contains(curNode.val)) {
@@ -50,13 +50,13 @@ class Duplicates {
         Node tortoise = headNode;
 
         // Move tortoise
-        while (tortoise.next != null) {
+        while (tortoise != null) {
 
             // Create a hare node
             Node hare = tortoise;
 
             // Move hare and remove nodes with same value
-            while (hare.next.next != null) {
+            while (hare.next != null) {
 
                 // If both nodes share the same value, move (hop) 2 nodes to the right
                 if (hare.next.val == tortoise.val) {
@@ -75,7 +75,7 @@ class Duplicates {
     public static void solOne(Node headNode) {
 
         /*
-            OBJECTIVE: Sort unsorted linked list
+            OBJECTIVE: Remove nodes with duplicate values
             Time Complexity: O(n log n) where n = length of linked list.
             Space Complexity: O(n) where n = length of buffer[] list in sortLinkedList().
         */
@@ -88,7 +88,7 @@ class Duplicates {
 
         // Traverse linked list and save elements to list
         Node curNode = headNode;
-        while (curNode.next != null) {
+        while (curNode != null) {
             buffer.add(curNode.val);
             curNode = curNode.next;
         }
@@ -104,18 +104,13 @@ class Duplicates {
         }
 
         // Traverse linked list again and delete nodes with duplicate values
+        Node prevNode = headNode;
         curNode = headNode.next;
-        while (curNode.next != null) {
-            
-            // Get previous node
-            Node prevNode = curNode.prev;
+        while (curNode != null) {
 
-            // If prevNode and curNode shares the same value, delete curNode
+            // If prevNode and curNode shares the same value, connect prevNode with next node
             if (prevNode.val == curNode.val) {
-                
-                // Connect neighboring nodes
                 prevNode.next = curNode.next;
-                curNode.next.prev = prevNode;
             }
 
             curNode = curNode.next;
@@ -125,7 +120,7 @@ class Duplicates {
     public static void main(String[] args) {
 
         // Create a linked list
-        LinkedList ll = new LinkedList();
+        SinglyLinkedList ll = new SinglyLinkedList();
         ll.append(0);
         ll.append(0);
         ll.append(21);
@@ -134,9 +129,9 @@ class Duplicates {
         ll.append(0);
         ll.append(0);
 
-        // solOne(ll.getHead());
         // hashSet(ll.getHead());
         tortoiseAndHare(ll.getHead());
+        // solOne(ll.getHead());
         ll.printList();
     }
 }
