@@ -41,6 +41,21 @@ class SinglyLinkedList:
 
         return self.head
 
+    def getMiddle(self):
+
+        # OBJECTIVE: Get middle node inside linked list
+
+        # If linked list is empty, exit function
+        if self.head == None:
+            return
+
+        # Create a temporary node
+        tmpNode = self.head
+        for _ in range(self.size//2):
+            tmpNode = tmpNode.next
+
+        return tmpNode
+
     def getSize(self):
 
         # OBJECTIVE: Get linked list size

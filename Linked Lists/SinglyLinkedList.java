@@ -40,6 +40,24 @@ public class SinglyLinkedList {
         return headNode;
     }
 
+    Node getMiddle() {
+
+        // OBJECTIVE: Return middle node from linked list
+
+        // If linked list is empty, exit function
+        if (headNode == null) {return null;}
+
+        // Create a temporary node
+        Node tmpNode = headNode;
+
+        // Move to node until midpoint
+        for (int i=0; i<size/2; i++) {
+            tmpNode = tmpNode.next;
+        }
+
+        return tmpNode;
+    }
+
     int getSize() {
 
         // OBJECTIVE: Return linked list size
