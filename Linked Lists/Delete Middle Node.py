@@ -4,6 +4,28 @@ from SinglyLinkedList import SinglyLinkedList
 
 class DeleteMiddleNode:
 
+    def bookSol(self, midNode):
+
+        """
+            OBJECTIVE: Given a middle node, delete it while still keeping the linked list connected as one.
+            Time Complexity: O(1) because linked list didn't need to be traversed through.
+            Space Complexity: O(1) because all 3 pointers take constant space. No large data structures were
+                            created.    
+        """
+
+        # If midNode is empty or is at the end, exit function
+        if midNode == None or midNode.next == None:
+            return
+
+        # Get node after midNode
+        nextNode = midNode.next
+
+        # Swap values
+        midNode.val = nextNode.val
+
+        # Connect midNode to nextNode's next node
+        midNode.next = nextNode.next
+
     def solOne(self, midNode):
 
         """
@@ -14,6 +36,11 @@ class DeleteMiddleNode:
             Space Complexity: O(1) because all 3 pointers take constant space. No large data structures were
                             created.    
         """
+
+        # If midNode is empty or is at the end, exit function
+        # IMPORTANT: ALWAYS add a base case, even in practice
+        if midNode == None or midNode.next == None:
+            return
 
         # Create 2 pointers
         prevNode = midNode
@@ -61,7 +88,8 @@ def main():
 
     # Delete middle node
     sol = DeleteMiddleNode()
-    sol.solOne(ll.getMiddle())
+    # sol.solOne(ll.getMiddle())
+    sol.bookSol(ll.getMiddle())
     ll.printList()
 
 main()
