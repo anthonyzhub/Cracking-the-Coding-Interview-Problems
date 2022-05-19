@@ -2,6 +2,16 @@ class SumList {
 
     public static Node bookSol(Node headA, Node headB, int carryOver) {
 
+        /*
+            OBJECTIVE: Write a function that adds 2 new numbers and returns the sum as a linked list
+
+            Time Complexity: O(1) because loops weren't used in the algorithm
+
+            Space Complexity: O(n) where n = length of the sum's linked list. headA and headB will be added together to create a new number. That new number will
+                            have its digit stored in a new linked list where each digit will have its own node. Each node will be made per recursive call and a
+                            recursive call takes up with memory because of stacking.
+        */
+
         // If both linked lists are empty and there's no carry over value, exit function
         if (headA == null && headB == null && carryOver == 0) {return null;}
 
