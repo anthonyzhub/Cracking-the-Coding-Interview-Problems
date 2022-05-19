@@ -1,3 +1,5 @@
+# Cracking the Coding Interview - pp. 94 - q 2.5
+
 from SinglyLinkedList import SinglyLinkedList
 from Node import Node
 
