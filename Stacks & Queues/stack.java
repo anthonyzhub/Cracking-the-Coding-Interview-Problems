@@ -1,3 +1,5 @@
+// Cracking the Coding Interview - pp. 98 - q 3.2
+
 import java.util.*;
 
 class stack {
@@ -6,10 +8,9 @@ class stack {
     int regSize;
     Stack<Integer> minStack;
 
-    public void Stack() {
+    public stack() {
         this.regStack = new Stack<Integer>();
         this.regSize = 0;
-
         this.minStack = new Stack<Integer>();
     }
 

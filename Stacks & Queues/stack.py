@@ -1,3 +1,5 @@
+# Cracking the Coding Interview - pp. 98 - q 3.2
+
 class Stack:
 
     def __init__(self) -> None:

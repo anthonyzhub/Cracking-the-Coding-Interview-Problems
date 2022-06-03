@@ -1,6 +1,7 @@
+# Cracking the Coding Interview - pp. 98 - q 3.2
+
 from stack import Stack
 from random import randint
-import sys
 
 class StackTest:
 
