@@ -62,6 +62,11 @@ class Stack:
         # OBJECTIVE: Return minimum value from stack
         return self.minStack[-1]
 
+    def getSize(self):
+
+        # OBJECTIVE: Return size of regStack
+        return self.regSize
+
     def push(self, newVal):
 
         # OBJECTIVE: Add newVal to top of the stack
@@ -111,7 +116,41 @@ class Stack:
 
         # NOTE: Since a list is being used with stack operations, I can cycle through the list. Python doesn't have a built-in stack data structure
         ans = ""
-        for elem in reversed(self.regStack):
+        for elem in self.regStack:
             ans += "{} ".format(elem)
 
         print(ans)
+
+    def popAt(self, index):
+
+        # OBJECTIVE: Remove element at specific index
+
+        # If index goes out-of-bounds, exit function
+        # if index > self.regSize:
+        if index > len(self.regStack):
+            print("Index will go out of bounds")
+            return
+
+        # Create a temporary stack
+        tmpStack = list()
+
+        # Iterate stack
+        for _ in range(index):
+
+            # Pop element from regStack and add it to temporary stack
+            tmpStack.append(self.regStack.pop())
+
+        # Get element at specific index
+        elemAt = tmpStack.pop()
+
+        # Add elements from tmpStack back to regStack
+        while len(tmpStack) > 0:
+            self.regStack.append(tmpStack.pop())
+
+        # Update regStack size
+        self.regSize -= 1
+
+        # Remove element from minValues
+        self.removeFromMinStack(elemAt)
+
+        return elemAt
