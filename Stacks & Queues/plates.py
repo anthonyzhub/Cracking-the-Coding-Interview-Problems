@@ -1,3 +1,5 @@
+# Cracking the Coding Interview - pp. 98 - q 3.3
+
 from stack import Stack
 from random import randint
 
