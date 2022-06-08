@@ -13,7 +13,14 @@ public class SortStack {
 
     void push(int newVal) {
 
-        // OBJECTIVE: Insert newVal to stack in correct order
+        /*
+         * OBJECTIVE: Insert newVal to stack in correct order
+         * 
+         * Time Complexity: O(n) where n = length of stack. The first while-loop will add all elements from stack to tmp until a proper place is found for newVal
+         *                  The second while-loop, adds all the elements back from tmp to stack.
+         * 
+         * Space Complexity: O(n) where n = length of tmp. The worst possible case is moving all elements from stack to tmp, in order to add newVal to stack
+         */
 
         // If stack is empty, add newVal to stack and exit function
         if (stack.isEmpty()) {
