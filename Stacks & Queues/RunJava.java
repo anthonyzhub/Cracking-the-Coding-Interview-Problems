@@ -3,19 +3,19 @@ public class RunJava {
     public static void main(String[] args) {
 
         // Initialize class
-        myqueue queueClass = new myqueue();
+        SortStack sortedStack = new SortStack();
             
-        queueClass.add(1);
-        queueClass.add(2);
-        queueClass.add(3);
-        queueClass.add(4);
-        queueClass.add(5);
-        queueClass.add(50);
-        queueClass.add(51);
+        sortedStack.push(1);
+        sortedStack.push(2);
+        sortedStack.push(3);
+        sortedStack.push(4);
+        sortedStack.push(5);
+        sortedStack.push(50);
+        sortedStack.push(51);
 
-        queueClass.peek();
-        queueClass.pop();
-        queueClass.pop();
-        queueClass.printQueue();
+        sortedStack.peek();
+        sortedStack.pop();
+        sortedStack.pop();
+        sortedStack.printStack();
     }
 }

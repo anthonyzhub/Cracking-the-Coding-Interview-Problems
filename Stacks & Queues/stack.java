@@ -89,7 +89,7 @@ class stack {
         pushToMinStack(newVal);
     }
 
-    public int remove() {
+    public int pop() {
         
         // OBJECTIVE: Remove the head element of stack and return its value
 

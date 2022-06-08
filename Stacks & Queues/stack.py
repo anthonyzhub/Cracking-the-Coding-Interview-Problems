@@ -78,7 +78,7 @@ class Stack:
         # Add newVal to minStack and sort it
         self.pushToMinStack(newVal)
 
-    def remove(self):
+    def pop(self):
 
         # OBJECTIVE: Remove head of stack
 
@@ -116,7 +116,7 @@ class Stack:
 
         # NOTE: Since a list is being used with stack operations, I can cycle through the list. Python doesn't have a built-in stack data structure
         ans = ""
-        for elem in self.regStack:
+        for elem in reversed(self.regStack):
             ans += "{} ".format(elem)
 
         print(ans)

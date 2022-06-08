@@ -37,7 +37,7 @@ class StackTest:
         self.minValues.remove(oldHead)
 
         # Check that head element equals to what was popped 
-        assert oldHead == self.stack.remove()
+        assert oldHead == self.stack.pop()
 
     def test_getMin(self):
 

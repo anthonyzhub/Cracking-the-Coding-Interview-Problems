@@ -35,7 +35,7 @@ public class stackTest {
         minValues.remove(oldHead);
 
         // Check that head element equals to what was popped
-        assert oldHead == stackClass.remove();
+        assert oldHead == stackClass.pop();
     }
 
     static void test_getMin(stack stackClass, ArrayList<Integer> minValues) {
