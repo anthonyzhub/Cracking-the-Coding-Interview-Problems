@@ -1,21 +1,26 @@
+import java.util.Random;
+
 public class RunJava {
 
     public static void main(String[] args) {
 
         // Initialize class
-        SortStack sortedStack = new SortStack();
-            
-        sortedStack.push(1);
-        sortedStack.push(2);
-        sortedStack.push(3);
-        sortedStack.push(4);
-        sortedStack.push(5);
-        sortedStack.push(50);
-        sortedStack.push(51);
+        DogsAndCats shelter = new DogsAndCats();
+        
+        String[] options = {"Cat", "Dog"};
+        for (int i=0; i<5; i++) {
 
-        sortedStack.peek();
-        sortedStack.pop();
-        sortedStack.pop();
-        sortedStack.printStack();
+            // Select a random animal
+            String randAnimal = options[new Random().nextInt(options.length)];
+
+            // Add animal to queue
+            shelter.enqueue(randAnimal, new Random().nextInt(100));
+        }
+
+        // Adopt cat and dog
+        shelter.dequeue("Dog");
+        // shelter.reviewAnimals();
+        shelter.dequeue("Cat");
+        shelter.reviewAnimals();
     }
 }
