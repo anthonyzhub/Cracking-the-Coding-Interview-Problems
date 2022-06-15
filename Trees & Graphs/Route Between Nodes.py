@@ -11,13 +11,15 @@ class Route:
     def bfs(self, sourceNode, destNode):
 
         """
-        OBJECTIVE: Output path from source to destination nodes
-
-        Time Complexity: O(V + E) where V = # of vertices and E = # of edges inside the graph. BFS involves inspecting a node and visiting its children.
-                        bfs() is inspecting each node and its children in order to find the destination node.
-
-        Space Complexity: O(N) where N = length of queue and visited data structures. queue is a list of nodes that need to be visited and visited holds
-                        all the nodes that I already checked. Queue's size will fluctuate overtime while visited will increase until all nodes are collected.
+         *
+         * OBJECTIVE: Use breath-first search to determine if there's a route between source and destination node
+         * 
+         * Time Complexity: O(V + E) where V = # of vertices and E = # of edges inside of the graph. BFS involves inspecting a node and visiting its children.
+         *                  bfs() is inspecting each node and its children in order to find the destination node.
+         * 
+         * Space Complexity: O(N) where N = length of queue and visited data structures. queue is a list of nodes that need to be visited and visited holds
+         *                  all the nodes that I already checked. Queue's size will fluctuate overtime while visited will increase until all nodes are collected.
+         *
         """
 
         # If either nodes is null, return false
@@ -69,7 +71,9 @@ class Route:
         # Create a queue and a visited set
         sourceQueue = deque([sourceNode])
         destQueue = deque([destNode])
-        visited = set()
+
+        visitedSource = set()
+        visitedDest = set()
 
         # Iterate queue
         while sourceQueue and destQueue:
@@ -79,8 +83,8 @@ class Route:
             curDestNode = destQueue.popleft()
 
             # Add both to visited set
-            visited.add(curSourceNode)
-            visited.add(curDestNode)
+            visitedSource.add(curSourceNode)
+            visitedDest.add(curDestNode)
 
             # Iteration curSourceNode's children
             for child in curSourceNode.children:
@@ -88,7 +92,10 @@ class Route:
                 if child == destNode:
                     return True
 
-                if child not in visited:
+                if child in visitedDest:
+                    return True
+
+                elif child not in visitedSource:
                     sourceQueue.append(child)
 
             # Iteration curDestNode's children
@@ -97,8 +104,23 @@ class Route:
                 if child == sourceNode:
                     return True
 
-                if child not in visited:
+                if child in visitedSource:
+                    return True
+                
+                elif child not in visitedDest:
                     destQueue.append(child)
+
+        # Iterate visitedSource queue
+        while sourceQueue:
+
+            if self.bfs(sourceQueue.popleft(), destNode) == True:
+                return True
+
+        # Iterate visitedDest queue
+        while destQueue:
+
+            if self.bfs(destQueue.popleft(), sourceNode) == True:
+                return True
 
         return False
 
@@ -109,13 +131,11 @@ def main():
     nodeB = Node()
     nodeC = Node()
     nodeD = Node()
-    nodeE = Node()
-    nodeF = Node()
 
     nodeA.children.append(nodeB)
     nodeB.children.append(nodeC)
     nodeC.children.append(nodeA)
-    nodeD.children.append(nodeC)
+    nodeD.children.append(nodeA)
 
     # Initialize solution
     route = Route()
