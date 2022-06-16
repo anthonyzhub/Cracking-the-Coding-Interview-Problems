@@ -7,11 +7,12 @@ public class Route {
         /*
          * OBJECTIVE: Use breath-first search to determine if there's a route between source and destination node
          * 
-         * Time Complexity: O(V + E) where V = # of vertices and E = # of edges inside of the graph. BFS involves inspecting a node and visiting its children.
-         *                  bfs() is inspecting each node and its children in order to find the destination node.
+         * Time Complexity: O(K^d) where K = # of kids per node and d = # of levels (or depth) I go through. In each iteration, I inspect every node and its
+         *                  children. As I go down, I will visit a child and it's children.
          * 
-         * Space Complexity: O(N) where N = length of queue and visited data structures. queue is a list of nodes that need to be visited and visited holds
-         *                  all the nodes that I already checked. Queue's size will fluctuate overtime while visited will increase until all nodes are collected.
+         * Space Complexity: O(N) where N = length of queue and set data structures. In the worst case scenario, all nodes are visited and added to the queue
+         *                   and set. The queue's size will fluctuate based on how many nodes haven't been visited yet. The set's size will increase after 
+         *                   every iteration because I need to remember which nodes I visited to avoid a repetition.
          */
 
         // If either node is null, return false
@@ -55,7 +56,12 @@ public class Route {
          * OBJECTIVE: Use bidrectional search to determine if there's a route between source and destination nodes. Bidrectional search performs
          *          2 breath-first search simultaneously.
          * 
-         * Time Complexity: O()
+         * Time Complexity: O(K^(d/2)) where K = # of kids per node and d = # of levels (or depth) after every iteration. Bidirectional search involves
+         *                  using bfs for both source and destination nodes, simultaneously. Since both are happening at the same time, I will only
+         *                  need to go down d/2 times. 
+         * 
+         * Space Complexity: O(N) where N = total # of nodes inside the graph. Worst case scenario involves adding all nodes to their appropriate sets. The
+         *                   queues' size will fluctuate and 
          */
 
         // If either node is null, exit function
