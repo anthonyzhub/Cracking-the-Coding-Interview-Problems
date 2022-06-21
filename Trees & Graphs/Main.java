@@ -10,8 +10,7 @@ public class Main {
         root.left.left = new TreeNode(4);
 
         // Initialize solution class
-        CheckBalanced balanced = new CheckBalanced();
-        boolean ans = balanced.check(root);
-        System.out.println(ans);
+        Depth depth = new Depth();
+        depth.bfs(root);
     }
 }
