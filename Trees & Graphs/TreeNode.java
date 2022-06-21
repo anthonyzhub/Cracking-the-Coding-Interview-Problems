@@ -8,7 +8,5 @@ public class TreeNode {
 
     TreeNode(int val) {
         this.val = val;
-        left = new TreeNode();
-        right = new TreeNode();
     }
 }
