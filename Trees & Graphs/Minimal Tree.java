@@ -7,8 +7,8 @@ public class Minimal {
         /*
          * OBJECTIVE: Continuosly add a new node to the tree from the array
          * 
-         * Time Complexity: O(n) where n = # of elements inside of the array. Each element inside of elems[] will
-         *                  have its own node that will be a part of the tree.
+         * Time Complexity: O(N) where N = # of elements inside of the array. Each element inside of elems[] will have its own node that will be a part of 
+         *                  the tree.
          * 
          * Space Complexity: O(n) where n = # of nodes inside the tree. Although nodes will take up constant space,
          *                  multiple nodes will be created based on the length of elems[]
