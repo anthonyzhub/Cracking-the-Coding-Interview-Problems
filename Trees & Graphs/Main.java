@@ -1,20 +1,30 @@
+import java.util.*;
+
 public class Main {
     public static void main(String[] args) {
 
-        // Create a tree
-        TreeNode root = new TreeNode(8);
+        // Initialize class
+        BuildOrder sol = new BuildOrder();
 
-        root.left = new TreeNode(4);
-        root.right = new TreeNode(10);
+        // Create a array and matrix
+        String[] projects = {"a", "b", "c", "d", "e", "f"};
+        String[][] dependencies = {
+            {"a", "d"},
+            {"f", "b"},
+            {"b", "d"},
+            {"f", "a"},
+            {"d", "c"}
+        };
 
-        root.left.left = new TreeNode(2);
-        root.left.right = new TreeNode(0);
+        Stack<ProjectNode> ans = sol.findBuildOrder(projects, dependencies);
+        Stack<ProjectNode> tmp = new Stack<ProjectNode>();
+        while (!ans.empty()) {
+            System.out.printf("%s ", ans.peek().getName());
+            tmp.push(ans.pop());
+        }
 
-        root.right.right = new TreeNode(20);
-
-        // Check if tree is a BST
-        CheckBST sol = new CheckBST();
-        boolean ans = sol.checkBST(root);
-        System.out.println(ans);
+        while (!tmp.empty()) {
+            ans.push(tmp.pop());
+        }
     }
 }

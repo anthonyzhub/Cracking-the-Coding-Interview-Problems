@@ -104,7 +104,7 @@ class Solution:
             graph.getOrCreateNode(project)
 
         # Connect dependency node to dependent node
-        # E.g., If project A relies on project B. Have project B point to project A
+        # E.g., If project A relies on project B, then have project B point to project A
         for dependency in dependencies:
 
             # Parse data
@@ -141,7 +141,7 @@ class Solution:
                     return False
 
             # If function is still continuing, set project node's status to COMPLETE.
-            # This means that search has been completed
+            # This means that search was completed
             project.setState(State.COMPLETE)
 
             # Add node to stack (stack will be used as algorithm's output)
@@ -162,7 +162,7 @@ class Solution:
             # Per node, if it's at a BLANK state, perform a dfs search on it
             if project.getState() == State.BLANK:
 
-                # If dfs() returned false, then exit function because a cycle was detected
+                # If dfs() returns false, then exit function because a cycle was detected
                 if not self.doDFS(project, stack):
                     return None
 
