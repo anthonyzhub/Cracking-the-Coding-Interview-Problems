@@ -1,12 +1,13 @@
 public class TreeNode {
     
-    int val;
+    String val;
     TreeNode left;
     TreeNode right;
+    TreeNode parent;
 
     TreeNode() {}
 
-    TreeNode(int val) {
+    TreeNode(String val) {
         this.val = val;
     }
 }
