@@ -1,102 +1,59 @@
-class CustomNode:
-
-    def __init__(self, val=0, left=None, right=None, parent=None) -> None:
-        self.val = val
-        self.left = None
-        self.right = None
-        self.parent = None
+# Cracking the Coding Interview - pp. 110 - q 4.6
 
 class Successor:
 
-    def inorder(self, root):
+    def leftMostChild(self, root):
 
-        if root != None:
-            self.inorder(root.left)
-            print(root.val)
-            self.inorder(root.right)
-
-    def leftMostChild(self, n):
-
-        # If root != empty, exit function
-        if n != None:
-            return
-
-        # Move down the left subtree
-        # NOTE: Inorder traversal goes left => root => right, so every node visit goes to the left child
-        while n.left != None:
-            n = n.left
-        
-        # Return next successor in inorder traversal
-        return n
-
-    def inorderSuccessor(self, n):
+        # OBJECTIVE: Traverse to the bottom-left of the tree as much as possible
 
         # If root is empty, exit function
-        if n != None:
-            return
+        if root is None:
+            return None
         
-        # If root has a right child, traverse left subtree
-        if n.right != None:
-            return self.leftMostChild(n.right)
+        # Move to the bottom left of the tree starting from given node
+        while root.left is not None:
+            root = root.left
+        
+        return root
+
+    def inorderSucc(self, root):
+
+        """
+        /*
+         * OBJECTIVE: Return the next node in in-order traversal
+         * 
+         * Time Complexity: O(n) where n = # of nodes needed to pass in order to reach the next left child. In
+         *                  leftMostChild(), the tree is traversed starting from the given node until a the bottom-left
+         *                  of the given (sub)tree is reached. 
+         * 
+         *                  In the while-loop inside inorderSucc(), the tree is traversed upwards until a left child node
+         *                  is reached, or there's no more tree left to traverse
+         * 
+         * Space Complexity: O(1) because 1 or at-most 2 nodes will be created and they'll always take the same
+         *                  constant space.
+         */
+        """
+
+        # If root is empty, exit function
+        if root is None:
+            return None
+        
+        # If there's a right child, find go to the left-most child node
+        if root.right is not None:
+            return self.leftMostChild(root.right)
         
         else:
 
-            # Copy root and its parent
-            q = n
-            x = q.parent
+            # Copy current node and get its parent
+            curRoot = root
+            rootParent = root.parent
+
+            # Go up the tree until we're on the left side, instead in the right
+            while rootParent != None and rootParent.left != curRoot:
+
+                # Move up the tree
+                curRoot = rootParent
+                rootParent = rootParent.parent
             
-            # Go up the tree
-            while x != None and x.left != q:
-
-                # Move up curNode to parent
-                q = x
-
-                # Move to curNode's grandparent
-                x = x.parent
-
-            return x
-
-    def in_order_successor(self, input_node):
-        if input_node is None:
-            return None
-
-        if input_node.right:
-            current = input_node.right
-            while current.left:
-                current = current.left
-            return current
-
-        ancestor = input_node.parent
-        child = input_node
-        while ancestor and ancestor.right == child:
-            child = ancestor
-            ancestor = ancestor.parent
-        return ancestor
-
-
-def main():
-
-    # Create a tree
-    root = CustomNode(8) # Level 1
-    level_1_a = CustomNode(7)
-    level_1_b = CustomNode(12)
-
-    level_2_a = CustomNode(3)
-    level_2_b = CustomNode(11)
-    level_2_c = CustomNode(13)
-
-    root.left = level_1_a
-    root.right = level_1_b
-
-    level_1_a.left = level_2_a
-    level_1_b.left = level_2_b
-    level_1_b.right = level_2_c
-
-    # Initialize solution
-    sol = Successor()
-    sol.inorder(root)
-    print(level_2_a.val)
-    nextNode = sol.in_order_successor(level_2_a)
-    print("{} => {}".format(level_2_a.val, nextNode))
-
-main()
+            # Return parent node
+            return rootParent
