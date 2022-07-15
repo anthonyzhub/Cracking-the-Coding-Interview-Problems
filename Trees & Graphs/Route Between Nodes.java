@@ -125,6 +125,12 @@ public class Route {
             }
         }
 
+        /*
+
+        IMPORTANT: The next 2 while-loops will be needed if sourceNode and destNode aren't in the same graph.
+                    If they weren't, why continue the program? If they were in the same graph, the first while-loop
+                    would have discovered it.
+
         // If sourceQueue isn't empty, but destQueue is, continue bfs on it until it's empty
         while (sourceQueue.size() > 0) {
 
@@ -138,7 +144,7 @@ public class Route {
             // Return true if popped node reaches to sourceNode
             if (bfs(destQueue.pop(), sourceNode) == true) {return true;}
         }
-
+        */
         return false;
     }
 }

@@ -88,11 +88,14 @@ class Route:
             visitedDest.add(curDestNode)
 
             # Iteration curSourceNode's children
+            # Name: sourceNode traversal
             for child in curSourceNode.children:
                 
+                # Check if child of sourceNode is destNode. If so, return true
                 if child == destNode:
                     return True
 
+                # If destNode's traversal has visited sourceNode's child before, return true. If not, add to sourceQueue
                 if child in visitedDest:
                     return True
 
@@ -100,17 +103,25 @@ class Route:
                     sourceQueue.append(child)
 
             # Iteration curDestNode's children
+            # Name: destNode traversal
             for child in curDestNode.children:
 
+                # Check if child of destNode is sourceNode. If so, return true
                 if child == sourceNode:
                     return True
 
+                # If sourceNode's traversal has visited destNode's child before, return true. If not, add to destQueue
                 if child in visitedSource:
                     return True
                 
                 elif child not in visitedDest:
                     destQueue.append(child)
 
+        """
+        IMPORTANT: The next 2 while-loops will be needed if sourceNode and destNode aren't in the same graph.
+                    If they weren't, why continue the program? If they were in the same graph, the first while-loop
+                    would have discovered it.
+        
         # Iterate visitedSource queue
         while sourceQueue:
 
@@ -122,7 +133,7 @@ class Route:
 
             if self.bfs(destQueue.popleft(), sourceNode) == True:
                 return True
-
+        """
         return False
 
 def main():
