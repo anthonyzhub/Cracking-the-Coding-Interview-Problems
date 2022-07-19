@@ -17,7 +17,7 @@ class Inspector:
         elif t1 == None or t2 == None:
             return False
 
-        # If both roots don't share teh same value, then return false
+        # If both roots don't share the same value, then return false
         elif t1.val != t2.val:
             return False
 
@@ -38,9 +38,9 @@ class Inspector:
         elif (t1.val == t2.val) and (self.matchTree(t1, t2)):
             return True
 
-        # Make a recursive call on both of their children to find out if t2 is a part of t1
+        # Make a recursive call on t1's children to see if t2 can be found
         else:
-            return self.subtree(t1.left, t2.left) or self.subtree(t1.right, t2.right)
+            return self.subtree(t1.left, t2) or self.subtree(t1.right, t2)
 
     def containsTree(self, t1, t2):
 
@@ -66,7 +66,7 @@ class Inspector:
 
     def inspect(self, t1, t2):
         
-        # OBJECTIVE: Compare t1 and t2 and their children. If they're a match, continue with traversal. If not, return false
+        # OBJECTIVE: Compare t1, t2, and their children against each other. If they're a match, continue with the traversal. If not, return false
 
         # If either node is empty, return false
         if (t1 == None and t2 != None) or (t1 != None and t2 == None):
@@ -110,7 +110,7 @@ class Inspector:
             if poppedNode.right:
                 queue.append(poppedNode.right)
 
-        # Return false if couldn't find t2 inside t1
+        # Return false if t2 couldn't be found inside of t1
         return False
 
     def checkSubtree(self, t1, t2):
@@ -142,13 +142,9 @@ class Inspector:
         *                   continue until another common root is found in bfs().
         """
 
-        # If either nodes are empty, return false
-        if (t1 == None and t2 != None) or (t1 != None and t2 == None):
+        # If hosting tree is empty, return false because t2 can't be a subtree of an empty tree
+        if t1 == None:
             return False
-        
-        # If both roots are equal to each other, return true
-        if t1.val == t2.val:
-            return True
         
         # Perform a breadth-first search and determine if t2 is a subtree of t1
         return self.bfs(t1, t2)
@@ -183,6 +179,7 @@ def main():
 
     # Initialize class
     sol = Inspector()
-    print(sol.checkSubtree(a, Node("A")))
+    # print(sol.checkSubtree(a, Node("A")))
+    print(sol.containsTree(a, j))
 
 main()

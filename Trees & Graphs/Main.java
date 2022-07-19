@@ -3,21 +3,34 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        // Construct a binary search tree.
-        // IMPORTANT: Make sure that ALL nodes have a reference to their parent node except for root
-        TreeNode a = new TreeNode("1");
-        TreeNode b = new TreeNode("2");
-        TreeNode c = new TreeNode("3");
+        // Create a tree
+        TreeNode a = new TreeNode("A");
+        TreeNode b = new TreeNode("B");
+        TreeNode c = new TreeNode("C");
+        TreeNode d = new TreeNode("D");
+        TreeNode e = new TreeNode("E");
+        TreeNode f = new TreeNode("F");
+        TreeNode g = new TreeNode("G");
+        TreeNode h = new TreeNode("H");
+        TreeNode i = new TreeNode("I");
+        TreeNode j = new TreeNode("J");
 
-        // a.left = b;
-        // a.right = c;
-        b.left = a;
-        b.right = c;
+        a.left = b;
+        a.right = c;
+
+        b.left = d;
+        b.right = e;
+
+        d.left = f;
+        d.right = h;
+
+        c.left = g;
+        c.right = i;
+
+        g.left = j;
 
         // Initialize class
-        BSTSequence seq = new BSTSequence();
-        for (LinkedList<String> output: seq.allSequences(b)) {
-            System.out.println(output);
-        }
+        CheckSubtree sol = new CheckSubtree();
+        System.out.println(sol.containsTree(a, j));
     }
 }
