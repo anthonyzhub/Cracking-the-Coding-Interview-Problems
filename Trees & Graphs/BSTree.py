@@ -195,19 +195,19 @@ class MyTree:
 
         # OBJECTIVE: Print tree in inorder traversale
 
-        def helper(root, path):
+        def helper(root):
 
             if root:
 
-                helper(root.left, path)
+                helper(root.left)
                 print(root.val, end=" ")
-                helper(root.right, path)
+                helper(root.right)
 
         # If tree is empty, exit function
         if self.size == 0:
             return
 
-        helper(self.root, "")
+        helper(self.root)
 
     def insert(self, newVal):
 
@@ -285,6 +285,8 @@ class MyTree:
             if popped.right:
                 queue.append(popped.right)
 
+        return None
+
     def delete(self, element):
 
         # OBJECTIVE: Delete node holding "element" as value
@@ -303,7 +305,7 @@ class MyTree:
         # Get parent node of desiredNode
         parentNode = desiredNode.parent
 
-        # If desiredNode is a leaf node, delete connection from parent and return node
+        # If desiredNode is a leaf node, delete connection from parent
         if desiredNode.left == None and desiredNode.right == None:
             
             # Find out if desiredNode is a left or right child

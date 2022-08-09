@@ -3,34 +3,25 @@ import java.util.*;
 public class Main {
     public static void main(String[] args) {
 
-        // Create a tree
-        TreeNode a = new TreeNode("A");
-        TreeNode b = new TreeNode("B");
-        TreeNode c = new TreeNode("C");
-        TreeNode d = new TreeNode("D");
-        TreeNode e = new TreeNode("E");
-        TreeNode f = new TreeNode("F");
-        TreeNode g = new TreeNode("G");
-        TreeNode h = new TreeNode("H");
-        TreeNode i = new TreeNode("I");
-        TreeNode j = new TreeNode("J");
+        BSTree bstree = new BSTree();
+        bstree.insert("A");
+        bstree.insert("B");
+        bstree.insert("C");
+        bstree.insert("D");
+        bstree.insert("E");
+        bstree.insert("F");
+        bstree.insert("G");
+        bstree.insert("H");
+        bstree.insert("I");
+        bstree.insert("J");
 
-        a.left = b;
-        a.right = c;
-
-        b.left = d;
-        b.right = e;
-
-        d.left = f;
-        d.right = h;
-
-        c.left = g;
-        c.right = i;
-
-        g.left = j;
-
-        // Initialize class
-        CheckSubtree sol = new CheckSubtree();
-        System.out.println(sol.containsTree(a, j));
+        // Print random node
+        String elemToDelete = bstree.getRandomNode().val;
+        System.out.println(elemToDelete);
+        bstree.find("F");
+        bstree.inorder();
+        System.out.println();
+        bstree.delete(elemToDelete);
+        bstree.inorder();
     }
 }
